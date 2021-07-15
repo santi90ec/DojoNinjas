@@ -1,0 +1,43 @@
+Crea 3 nuevos dojos
+>>> from dojo_ninjas_app.models import Dojo, Ninja
+>>> dojo1=Dojo.objects.create(name="DOJO",city="Quito",state="Pichincha")
+>>> dojo2=Dojo.objects.create(name="CODING",city="Ibarra",state="Imbabura")
+>>> dojo3=Dojo.objects.create(name="PKM DOJO",city="Cuenca",state="Azuay")
+elimina los 3 dojos que acaba de crear
+>>> dojo1.delete()
+(1, {'dojo_ninjas_app.Dojo': 1})
+>>> dojo2.delete()
+(1, {'dojo_ninjas_app.Dojo': 1})
+>>> dojo3.delete()
+(1, {'dojo_ninjas_app.Dojo': 1})
+Crea 3 dojos más
+dojo1=Dojo.objects.create(name="Dojo",city="Quito",state="Pichincha")
+dojo2=Dojo.objects.create(name="Code",city="Ibarra",state="Imbabura")
+dojo3=Dojo.objects.create(name="Coding Dojo",city="Cuenca",state="Azuay")
+Crea 3 Ninjas 1er dojo
+ninja1=Ninja.objects.create(first_name="Santiago", last_name="Atapuma" , dojo=dojo1)
+ninja2=Ninja.objects.create(first_name="Andres", last_name="Yanez", dojo=dojo1)
+ninja3=Ninja.objects.create(first_name="Elva", last_name="Yanez", dojo=dojo1)
+Crea 3 Ninja 2do dojo
+ninja1=Ninja.objects.create(first_name="Juan", last_name="Atapuma" , dojo=dojo2)
+ninja2=Ninja.objects.create(first_name="Francisco", last_name="Yanez", dojo=dojo2)
+ninja3=Ninja.objects.create(first_name="JJ", last_name="Atapuma", dojo=dojo2)
+Crea 3 Ninja 3er dojo
+ninja1=Ninja.objects.create(first_name="Erick", last_name="Castillo" , dojo=dojo3)
+ninja2=Ninja.objects.create(first_name="Felipe", last_name="Palan", dojo=dojo3)
+ninja3=Ninja.objects.create(first_name="Ernesto", last_name="Chavez", dojo=dojo3)
+
+>>> dojo1.ninjas
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x000001B80B6ADE80>
+>>> dojo1.ninjas.all()
+<QuerySet [<Ninja: Ninja object (10)>, <Ninja: Ninja object (11)>, <Ninja: Ninja object (12)>]>
+
+>>> dojo3.ninjas.all()
+<QuerySet [<Ninja: Ninja object (16)>, <Ninja: Ninja object (17)>, <Ninja: Ninja object (18)>]>
+>>> dojo3.ninjas
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x000001B80B6ADEB0>
+
+>>> ninja3.dojo.name
+'Coding Dojo'
+
+>>> newDojo=Dojo.objects.create(name="nuevo Dojo", city="CA", state="FL", desc="Quito")
